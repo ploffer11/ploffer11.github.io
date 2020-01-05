@@ -1,84 +1,115 @@
 <!DOCTYPE html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>React html</title>
-  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <meta charset="UTF-8">
+    <title>ploffer11's history</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <!-- <link rel="stylesheet" href="/css/index.css"> -->
 
-  <style>
-    .container {
-      padding: 50px;
-      background-color: aliceblue;
-    }
-  </style>
+    <style>
+        .foo {
+            background-color: rgb(59, 60, 63);
+        }
+    </style>
+
+
 </head>
 
 <body>
-  <div class="container"></div>
+    <div id="container"></div>
 
-  <script type="text/babel">
-    let destination = document.querySelector(".container");
+    <script type="text/babel">
+        class Main extends React.Component {
+            render() {
+                let backgroundStyle = {
+                    padding: "1em",
+                    backgroundColor: "rgb(59, 60, 63)"
+                };
 
-    class Square extends React.Component {
-      render() {
-        let squareStyle = {
-          height: 150,
-          backgroundColor: this.props.color
-        };
-        return (
-          <div style={squareStyle}></div>
-        );
-      }
-    }
-
-    class Label extends React.Component {
-      render() {
-        let labelStyle = {
-          fontFamily: "sans-serif",
-          fontWeight: "bold",
-          padding: 13,
-          margin: 0
+                return (
+                    <div style={backgroundStyle}>
+                        <Profile width="30em" height="10em" color={this.props.backgroundColor} />
+                        <Card color="#FFA737" />
+                        <Card color="#FF0142" />
+                        <Card color="#42FFA1" />
+                        <Card color="#3124FF" />
+                        <Card color="#EE24FF" />
+                        <Card color="#FFEEDD" />
+                    </div>
+                );
+            }
         }
-        return (
-          <p style={labelStyle}>{this.props.color}</p>
+
+        class Profile extends React.Component {
+            render() {
+                let profileStyle = {
+                    width: this.props.width,
+                    height: this.props.height,
+                    backgroundColor: this.props.color,
+                    color: "white"
+                };
+
+                return (
+                    <div style={profileStyle}>This is profile</div>
+                );
+            }
+        }
+
+        class Square extends React.Component {
+            render() {
+                let squareStyle = {
+                    height: 150,
+                    backgroundColor: this.props.color
+                };
+                return (
+                    <div style={squareStyle}></div>
+                );
+            }
+        }
+
+        class Label extends React.Component {
+            render() {
+                let labelStyle = {
+                    fontFamily: "sans-serif",
+                    fontWeight: "bold",
+                    padding: 13,
+                    margin: 0
+                }
+                return (
+                    <p style={labelStyle}>{this.props.color}</p>
+                );
+            }
+        }
+
+        class Card extends React.Component {
+            render() {
+                let cardStyle = {
+                    height: 200,
+                    width: 150,
+                    padding: 0,
+                    backgroundColor: "#FFF",
+                    boxShadow: "0px 0px 5px #666",
+                    display: "inline-block"
+                };
+                return (
+                    <div style={cardStyle} >
+                        <Square color={this.props.color} />
+                        <Label color={this.props.color} />
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <div>
+                <Main />
+            </div>
+            , document.querySelector("#container")
         );
-      }
-    }
 
-    class Card extends React.Component {
-      render() {
-        let cardStyle = {
-          height: 200,
-          width: 150,
-          padding: 0,
-          backgroundColor: "#FFF",
-          boxShadow: "0px 0px 5px #666",
-          display: "inline-block"
-        };
-        return (
-          <div style={cardStyle} >
-            <Square color={this.props.color} />
-            <Label color={this.props.color} />
-          </div>
-        );
-      }
-    }
-
-    ReactDOM.render(
-      <div>
-        <Card color="#FFA737" />
-        <Card color="#FF0142" />
-        <Card color="#42FFA1" />
-        <Card color="#3124FF" />
-        <Card color="#EE24FF" />
-        <Card color="#FFEEDD" />
-      </div>
-      , destination
-    );
-
-  </script>
+    </script>
 </body>
 
 </html>
