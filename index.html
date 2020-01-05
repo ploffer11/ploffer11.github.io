@@ -1,41 +1,84 @@
-<!doctype html>
-<html>
-  <head>
-    <title>ploffer11's history</title>
-  </head> 
-  <body>
-    <h2>Profile</h2>
-    <p>이름: 김준호</p>
-    <p>생년월일: 2000년 1월 10일</p>
-    <p>직업: 한양대학교 컴퓨터 소프트웨어학부 2학년</p>
-    <p>주 사용 언어: Python3, C++</p>
+<!DOCTYPE html>
 
-    <h2>Timeline</h2>
+<head>
+  <meta charset="UTF-8">
+  <title>React html</title>
+  <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
 
-    <p>2017.03 Arduino를 사용해 드론 SW 융합 프로젝트 진행</p>
-    <p>2017.06 고양시 드론 종합 경진대회 SW 융합 부문 2위</p> 
-    <p>2018.03 한양대학교 컴퓨터 소프트웨어학부 입학</p>
-    <p>2018.03 한양대학교 알고리즘 동아리 ALOHA 가입</p>
-    <p>2018.03 Baekjoon Online Judge 가입</p>
-    <p>2018.11 HCPC div2 3위</p>
-    <p>2019.01 Codeforces expert 도달</p>
-    <p>2019.06 Baekjoon Online Judge 1000문제</p>
-    <p>2019.07 Samsung Brightics를 사용해 키와 허리둘레로 몸무게 선형회귀 모델링 및 시각화 프로젝트</p>
-    <p>2019.08 UCPC 본선 진출</p>
-    <p>2019.08 숭실대 고려대 한양대 알고리즘 동아리 연합 대회 div1 3위</p>
-    <p>2019.08 비트코인 트레이딩 봇 제작</p>
-    <p>2019.08 CNN을 이용한 얼굴 국적 분류 프로젝트</p>
-    <p>2019.09 카카오 신입 개발자 공개채용 온라인 코딩테스트 합격</p>
-    <p>2019.10 ICPC Seoul Resional 진출</p>
-    <p>2019.11 HCPC 검수진 자격으로 대회 준비</p>
-    <p>2019.11 P2P 통신을 Java를 사용해 TCP통신과 멀티스레드 기반으로 구현</p> 
-    <p>2019.12 On-Disk Based B+ Tree로 Database 구현</p>
+  <style>
+    .container {
+      padding: 50px;
+      background-color: aliceblue;
+    }
+  </style>
+</head>
 
-    <h2>Link</h2>
-    <a href="https://www.acmicpc.net/user/ploffer11">Baekjoon Online Judge</a>
-    <p></p>
-    <a href="https://codeforces.com/profile/coano2000">Codeforces</a>
-    <p></p>
-    <a href="https://github.com/ploffer11">Github</a>
-  </body> 
-</html> 
+<body>
+  <div class="container"></div>
+
+  <script type="text/babel">
+    let destination = document.querySelector(".container");
+
+    class Square extends React.Component {
+      render() {
+        let squareStyle = {
+          height: 150,
+          backgroundColor: this.props.color
+        };
+        return (
+          <div style={squareStyle}></div>
+        );
+      }
+    }
+
+    class Label extends React.Component {
+      render() {
+        let labelStyle = {
+          fontFamily: "sans-serif",
+          fontWeight: "bold",
+          padding: 13,
+          margin: 0
+        }
+        return (
+          <p style={labelStyle}>{this.props.color}</p>
+        );
+      }
+    }
+
+    class Card extends React.Component {
+      render() {
+        let cardStyle = {
+          height: 200,
+          width: 150,
+          padding: 0,
+          backgroundColor: "#FFF",
+          boxShadow: "0px 0px 5px #666",
+          display: "inline-block"
+        };
+        return (
+          <div style={cardStyle} >
+            <Square color={this.props.color} />
+            <Label color={this.props.color} />
+          </div>
+        );
+      }
+    }
+
+    ReactDOM.render(
+      <div>
+        <Card color="#FFA737" />
+        <Card color="#FF0142" />
+        <Card color="#42FFA1" />
+        <Card color="#3124FF" />
+        <Card color="#EE24FF" />
+        <Card color="#FFEEDD" />
+      </div>
+      , destination
+    );
+
+  </script>
+</body>
+
+</html>
