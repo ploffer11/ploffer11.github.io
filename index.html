@@ -2,15 +2,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>ploffer11's history</title>
+    <title>ploffer11's page</title>
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
     <!-- <link rel="stylesheet" href="/css/index.css"> -->
 
     <style>
-        .foo {
-            background-color: rgb(59, 60, 63);
+        body {
+            background-color: rgb(34, 42, 53);
         }
     </style>
 
@@ -23,83 +23,89 @@
     <script type="text/babel">
         class Main extends React.Component {
             render() {
-                let backgroundStyle = {
-                    padding: "1em",
-                    backgroundColor: "rgb(59, 60, 63)"
-                };
-
                 return (
-                    <div style={backgroundStyle}>
-                        <Profile width="30em" height="10em" color={this.props.backgroundColor} />
-                        <Card color="#FFA737" />
-                        <Card color="#FF0142" />
-                        <Card color="#42FFA1" />
-                        <Card color="#3124FF" />
-                        <Card color="#EE24FF" />
-                        <Card color="#FFEEDD" />
+                    <div style={{ textAlign: "center" }}>
+                        <Hexagon width="325px" height="325px" text="Profile" margin="5px auto" display="block" />
+                        <Hexagon width="325px" height="325px" text="Technique" margin="-100px 0px 0px 0px" display="inline-block" />
+                        <Hexagon width="325px" height="325px" text="History" margin="-100px 0px 0px -60px" display="inline-block" />
                     </div>
-                );
+                )
             }
         }
 
         class Profile extends React.Component {
             render() {
-                let profileStyle = {
+
+            }
+        }
+
+        class Technique extends React.Component {
+            render() {
+
+            }
+        }
+
+        class History extends React.Component {
+            render() {
+
+            }
+        }
+
+        class Hexagon extends React.Component {
+            render() {
+                let hexagonStyle = {
                     width: this.props.width,
                     height: this.props.height,
-                    backgroundColor: this.props.color,
-                    color: "white"
+                    margin: this.props.margin,
+                    display: this.props.display,
+                    /*border: "5px solid white",*/
+                    position: "relative"
                 };
 
                 return (
-                    <div style={profileStyle}>This is profile</div>
+                    <div style={hexagonStyle}>
+                        <Image src="./image/hexagon.png" />
+                        <TextBox text={this.props.text} />
+                    </div >
                 );
             }
         }
 
-        class Square extends React.Component {
+        class Image extends React.Component {
             render() {
-                let squareStyle = {
-                    height: 150,
-                    backgroundColor: this.props.color
+                let imageStyle = {
+                    /*border: "3px solid red",*/
+                    width: "100%",
+                    height: "100%",
+                    verticalAlign: "middle"
                 };
                 return (
-                    <div style={squareStyle}></div>
-                );
-            }
-        }
-
-        class Label extends React.Component {
-            render() {
-                let labelStyle = {
-                    fontFamily: "sans-serif",
-                    fontWeight: "bold",
-                    padding: 13,
-                    margin: 0
-                }
-                return (
-                    <p style={labelStyle}>{this.props.color}</p>
-                );
-            }
-        }
-
-        class Card extends React.Component {
-            render() {
-                let cardStyle = {
-                    height: 200,
-                    width: 150,
-                    padding: 0,
-                    backgroundColor: "#FFF",
-                    boxShadow: "0px 0px 5px #666",
-                    display: "inline-block"
-                };
-                return (
-                    <div style={cardStyle} >
-                        <Square color={this.props.color} />
-                        <Label color={this.props.color} />
+                    <div style={imageStyle}>
+                        <img src={this.props.src} width="100%" />
                     </div>
                 );
             }
+        }
+
+
+        class TextBox extends React.Component {
+            render() {
+                let textBoxStyle = {
+                    fontFamily: "sans-serif",
+                    fontWeight: "bold",
+                    margin: 0,
+                    fontSize: 35,
+                    color: "white",
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)"
+                };
+                return (
+                    <p style={textBoxStyle}>{this.props.text}</p>
+                );
+            }
+
         }
 
         ReactDOM.render(
