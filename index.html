@@ -20,14 +20,19 @@
 <body>
     <div id="container"></div>
 
+
+
     <script type="text/babel">
         class Main extends React.Component {
             render() {
                 return (
                     <div style={{ textAlign: "center" }}>
-                        <Hexagon width="325px" height="325px" text="Profile" margin="5px auto" display="block" />
-                        <Hexagon width="325px" height="325px" text="Technique" margin="-100px 0px 0px 0px" display="inline-block" />
-                        <Hexagon width="325px" height="325px" text="History" margin="-100px 0px 0px -60px" display="inline-block" />
+                        <Hexagon width="325px" height="325px" text="Profile"
+                            margin="5px auto" display="block" usemap="map-1" href="./html/profile.html" />
+                        <Hexagon width="325px" height="325px" text="Technique"
+                            margin="-100px 0px 0px 0px" display="inline-block" usemap="map-2" href="./html/technique.html" />
+                        <Hexagon width="325px" height="325px" text="History"
+                            margin="-100px 0px 0px -60px" display="inline-block" usemap="map-3" href="./html/history.html" />
                     </div>
                 )
             }
@@ -64,9 +69,20 @@
 
                 return (
                     <div style={hexagonStyle}>
-                        <Image src="./image/hexagon.png" />
                         <TextBox text={this.props.text} />
+                        <Image src="./image/hexagon.png" {...this.props} />
                     </div >
+                );
+            }
+        }
+
+        class HexagonButton extends React.Component {
+            render() {
+                return (
+                    <map name={this.props.usemap} >
+                        <area shape="poly" coords="40,92,40,235,165,305,288,235,288,235,288,92,165,22" href={this.props.href} alt="?"
+                            target="_blank" />
+                    </map>
                 );
             }
         }
@@ -77,16 +93,18 @@
                     /*border: "3px solid red",*/
                     width: "100%",
                     height: "100%",
-                    verticalAlign: "middle"
+                    verticalAlign: "middle",
+                    position: "relative"
                 };
+
                 return (
                     <div style={imageStyle}>
-                        <img src={this.props.src} width="100%" />
+                        <HexagonButton {...this.props} />
+                        <img src={this.props.src} width="100%" usemap={"#" + this.props.usemap} />
                     </div>
                 );
             }
         }
-
 
         class TextBox extends React.Component {
             render() {
