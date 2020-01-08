@@ -40,7 +40,7 @@
                 return (
                     <div style={mainStyle}>
                         <Hexagon width="325px" height="325px" text="Profile"
-                            margin="0 auto 0 auto" display="block" usemap="map-1" href="./html/profile.html" />
+                            margin="0 auto 0 auto" display="block" usemap="map-1" href="./html/lightning.html" />
                         <Hexagon width="325px" height="325px" text="Technique"
                             margin="-100px 0px 0px 0px" display="inline-block" usemap="map-2" href="./html/technique.html" />
                         <Hexagon width="325px" height="325px" text="History"
@@ -93,7 +93,7 @@
                 return (
                     <map name={this.props.usemap} >
                         <area shape="poly" coords="40,92,40,235,165,305,288,235,288,235,288,92,165,22" href={this.props.href} alt="?"
-                            target="_blank" />
+                            target="_self" />
                     </map>
                 );
             }
@@ -135,7 +135,6 @@
                     <p style={textBoxStyle}>{this.props.text}</p>
                 );
             }
-
         }
 
         ReactDOM.render(
