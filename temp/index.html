@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ploffer11's page</title>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <!-- <link rel="stylesheet" href="/css/index.css"> -->
+
+    <style>
+        body {
+            background-color: rgb(34, 42, 53);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="container"></div>
+
+    <script type="text/babel">
+        class Main extends React.Component {
+            render() {
+                let mainStyle = {
+                    textAlign: "center",
+                    height: "550px",
+                    width: "800px",
+                };
+
+                return (
+                    <div style={mainStyle}>
+                        <Hexagon width="325px" height="325px" text="Lightning"
+                            margin="0 auto 0 auto" display="block" usemap="map-1" href="./html/lightning.html" />
+                        <Hexagon width="325px" height="325px" text="Technique"
+                            margin="-100px 0px 0px 0px" display="inline-block" usemap="map-2" href="./html/technique.html" />
+                        <Hexagon width="325px" height="325px" text="History"
+                            margin="-100px 0px 0px -65px" display="inline-block" usemap="map-3" href="./html/history.html" />
+                    </div>
+                );
+            }
+        }
+
+        class Profile extends React.Component {
+            render() {
+
+            }
+        }
+
+        class Technique extends React.Component {
+            render() {
+
+            }
+        }
+
+        class History extends React.Component {
+            render() {
+
+            }
+        }
+
+        class Hexagon extends React.Component {
+            render() {
+                let hexagonStyle = {
+                    width: this.props.width,
+                    height: this.props.height,
+                    margin: this.props.margin,
+                    display: this.props.display,
+                    /*border: "5px solid white",*/
+                    position: "relative"
+                };
+
+                return (
+                    <div style={hexagonStyle}>
+                        <TextBox text={this.props.text} />
+                        <Image src="./image/hexagon2.png" {...this.props} />
+                    </div >
+                );
+            }
+        }
+
+        class HexagonButton extends React.Component {
+            render() {
+                return (
+                    <map name={this.props.usemap} >
+                        <area shape="poly" coords="40,92,40,235,165,305,288,235,288,235,288,92,165,22" href={this.props.href} alt="?"
+                            target="_self" />
+                    </map>
+                );
+            }
+        }
+
+        class Image extends React.Component {
+            render() {
+                let imageStyle = {
+                    /*border: "3px solid red",*/
+                    width: "100%",
+                    height: "100%",
+                    verticalAlign: "middle",
+                    position: "relative"
+                };
+
+                return (
+                    <div style={imageStyle}>
+                        <HexagonButton {...this.props} />
+                        <img src={this.props.src} width="100%" usemap={"#" + this.props.usemap} />
+                    </div>
+                );
+            }
+        }
+
+        class TextBox extends React.Component {
+            render() {
+                let textBoxStyle = {
+                    fontFamily: "sans-serif",
+                    fontWeight: "bold",
+                    margin: 0,
+                    fontSize: 35,
+                    color: "white",
+                    position: "absolute",
+                    top: "50%",
+                    left: "50%",
+                    transform: "translate(-50%, -50%)"
+                };
+                return (
+                    <p style={textBoxStyle}>{this.props.text}</p>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <div>
+                <Main />
+            </div>
+            , document.querySelector("#container")
+        );
+
+    </script>
+</body>
+
+</html>
